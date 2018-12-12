@@ -1,5 +1,9 @@
 package it.polimi.deib.middleware.rest.stub.model;
 
-public class Item {
+
+import java.util.List;
+
+public class OrderS {
+
 
 }

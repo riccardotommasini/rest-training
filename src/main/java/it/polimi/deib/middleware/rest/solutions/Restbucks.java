@@ -34,10 +34,10 @@ public class Restbucks {
                         order.setPayment(gson.fromJson(request.body(), Payment.class));
                         Barista.place(order.getId(), order);
                         response.status(201);
-                        return gson.toJson(new Resp(201, "Payment received for order id [" + order.getId() + "]"));
+                        return gson.toJson(new Resp(201, "PaymentP received for order id [" + order.getId() + "]"));
 
                     } else
-                        return gson.toJson(new Resp(404, "Order not found id [" + order.getId() + "]"));
+                        return gson.toJson(new Resp(404, "OrderP not found id [" + order.getId() + "]"));
 
                 });
             });
@@ -51,7 +51,7 @@ public class Restbucks {
                     String body = request.body();
                     Order order = gson.fromJson(body, Order.class);
                     Barista.place(order);
-                    return gson.toJson(new Resp(201, "Order Created with id [" + order.getId() + "]"));
+                    return gson.toJson(new Resp(201, "OrderP Created with id [" + order.getId() + "]"));
                 });
                 //Used for edit the order
                 put("/:id", (request, response) -> {
@@ -60,7 +60,7 @@ public class Restbucks {
                     response.status(201);
                     Order order = gson.fromJson(request.body(), Order.class);
                     Barista.place(id, order);
-                    return gson.toJson(new Resp(201, "Order [" + order.getId() + "] successfully Changed"));
+                    return gson.toJson(new Resp(201, "OrderP [" + order.getId() + "] successfully Changed"));
                 });
                 delete("/:id", (request, response) -> {
                     String id = request.params(":id");
