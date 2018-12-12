@@ -12,10 +12,22 @@ Students are welcome to open pull-requests and issues
 to improve the material.
 
 
-## Projects
+## Restbucks
 
-### Restbucks
 
+
+This project describes the example presented in class.
+
+A barista interacts with customers (Clients) taking order includig items and accepting payments for the order.
+
+
+## Homeworks
+
+- manage the items and allow mentioning only existing ones
+- include the cassier to manage the payments
+- use hyptermedia to link different resources
+
+## Curl Commands
 ```bash
 
 -- Idempotent 
