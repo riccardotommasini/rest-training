@@ -1,13 +1,14 @@
-package it.polimi.deib.middleware.rest.routing;
+package it.polimi.deib.middleware.rest.users;
 
 public class User {
 
-    private String fullnanme;
+    private String id;
+    private String fullname;
     private String email;
     private String age;
 
     public User(String fullnanme, String email, String age) {
-        this.fullnanme = fullnanme;
+        this.fullname = fullnanme;
         this.email = email;
         this.age = age;
     }
@@ -15,8 +16,8 @@ public class User {
     public User() {
     }
 
-    public String getFullnanme() {
-        return fullnanme;
+    public String getFullname() {
+        return fullname;
     }
 
     public String getEmail() {
@@ -25,5 +26,21 @@ public class User {
 
     public String getAge() {
         return age;
+    }
+
+    @Override
+    public String toString() {
+        return "{\"fullname\":\"" + fullname + "\"," +
+                "\"id\":\"" + id + "\"," +
+                "\"email\":\"" + email + "\"," +
+                "\"age\":\"" + age + "\"}";
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
