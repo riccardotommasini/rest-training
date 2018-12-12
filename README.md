@@ -14,6 +14,6 @@ to improve the material.
 
 ## Project
 
-- ["Hello World Project"](https://github.com/riccardotommasini/rest-training/tree/helloworld)
+- [Hello World](https://github.com/riccardotommasini/rest-training/tree/helloworld)
 - [Users](https://github.com/riccardotommasini/rest-training/tree/users)
 - [Restbucks](https://github.com/riccardotommasini/rest-training/tree/restbucks)
