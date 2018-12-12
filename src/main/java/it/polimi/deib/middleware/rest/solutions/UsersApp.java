@@ -1,4 +1,4 @@
-package it.polimi.deib.middleware.rest.users;
+package it.polimi.deib.middleware.rest.solutions;
 
 import com.google.gson.Gson;
 import org.slf4j.Logger;

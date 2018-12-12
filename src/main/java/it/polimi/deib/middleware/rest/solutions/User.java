@@ -1,4 +1,4 @@
-package it.polimi.deib.middleware.rest.users;
+package it.polimi.deib.middleware.rest.solutions;
 
 public class User {
 
