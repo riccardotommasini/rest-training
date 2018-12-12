@@ -17,3 +17,5 @@ to improve the material.
 - [Hello World](https://github.com/riccardotommasini/rest-training/tree/helloworld)
 - [Users](https://github.com/riccardotommasini/rest-training/tree/users)
 - [Restbucks](https://github.com/riccardotommasini/rest-training/tree/restbucks)
+- [Restbucks DB and Queue]()
+- [Restbucks Kafka]()
