@@ -1,4 +1,4 @@
-package it.polimi.deib.middleware.rest;
+package it.polimi.deib.middleware.rest.logging;
 
 import org.eclipse.jetty.server.AbstractNCSARequestLog;
 import org.slf4j.Logger;

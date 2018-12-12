@@ -1,5 +1,6 @@
-package it.polimi.deib.middleware.rest;
+package it.polimi.deib.middleware.rest.logging;
 
+import it.polimi.deib.middleware.rest.icebreak.RestMethodsApp;
 import org.eclipse.jetty.server.AbstractNCSARequestLog;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;

@@ -1,4 +1,4 @@
-package it.polimi.deib.middleware.rest;
+package it.polimi.deib.middleware.rest.icebreak;
 
 
 import static spark.Spark.get;
