@@ -23,8 +23,8 @@ A barista interacts with customers (Clients) taking order includig items and acc
 
 ## Homeworks
 
-- manage the items and allow mentioning only existing ones
-- include the cassier to manage the payments
+- manage the items and allow mentioning only existing ones (Items have name and price)
+- include the cassier to manage the payments, calculate the order price based on the items
 - use hyptermedia to link different resources
 
 ## Curl Commands
