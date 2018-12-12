@@ -14,40 +14,48 @@ to improve the material.
 
 ## Projects
 
-### Hello World
-```bash
-
- curl -X POST http://localhost:9999/hello
- curl -X POST http://localhost:9999/hello
- curl  http://localhost:9999/hello
- curl  http://localhost:9999/hello
- curl -X POST http://localhost:9999/hello
-```
-
-### Users
- ## Project
+### Restbucks
 
 ```bash
 
 -- Idempotent 
 curl -X POST \
-  http://localhost:4567/api/users \
+  http://localhost:4567/api/orders \
   -H 'Cache-Control: no-cache' \
-  -d '{"fullname":"Luca Verdi","email":"luca.verdi@polimi.it","age":"64"}'
-
-{"status":201,"message":"Resource Created with id [673f3c45]"}
-
--- NOT! Idempotent 
+  -H 'Content-Type: application/json' \
+  -d '{ "items": [ 
+    {"name":"coffe", "description":"black"},
+    {"name":"snack", "description":"granola"}]
+}'
+{
+    "status": 201,
+    "message": "Order Created with id [86f1d9f3]"
+}
+-- Changing the order -   NOT! Idempotent 
 
 curl -X PUT \
-  http://localhost:4567/api/users/mrss1 \
+  http://localhost:4567/api/orders/86f1d9f3 \
   -H 'Cache-Control: no-cache' \
-  -d '{"fullname":"Mario Rossi","email":"mario.rossi@polimi.it","age":"42"}'
+  -H 'Content-Type: application/json' \
+  -d '{ "items": [ 
+    {"name":"coffe", "description":"black"},
+    {"name":"snack", "description":"granola"},
+    {"name":"drink", "description":"frappuccino"}]
+}'
 
--- first
-{"status":201,"message":"Resource Created with id [mrss1]"}
--- second
-{"status":409,"message":"mrss1 already exists"}
+-- Paying
+
+curl -X POST \
+  http://localhost:4567/api/payments/86f1d9f3 \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -d '    {"currency":"EUR", "ammount":10.0}'
+
+{
+    "status": 201,
+    "message": "Payment received for order id [69514c18]"
+}
+-- Deleting
 
 curl -X DELETE \
   http://localhost:4567/api/users/mrss1
