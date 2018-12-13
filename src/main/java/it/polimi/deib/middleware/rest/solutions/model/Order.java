@@ -6,10 +6,18 @@ import java.util.List;
 public class Order {
 
     private String id;
+    private String client;
     private List<Item> items;
     private Payment payment;
+    private double price;
 
     public Order() {
+    }
+
+    public Order(String client, List<Item> items1, double price) {
+        this.client = client;
+        this.items = items1;
+        this.price = price;
     }
 
 
@@ -39,5 +47,13 @@ public class Order {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
     }
 }

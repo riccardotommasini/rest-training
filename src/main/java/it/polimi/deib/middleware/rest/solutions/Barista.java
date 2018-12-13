@@ -1,5 +1,6 @@
 package it.polimi.deib.middleware.rest.solutions;
 
+import it.polimi.deib.middleware.rest.solutions.model.Item;
 import it.polimi.deib.middleware.rest.solutions.model.Order;
 
 import java.util.Collection;
@@ -10,6 +11,8 @@ import java.util.UUID;
 public class Barista {
 
     static Map<String, Order> users = new HashMap<>();
+    static Map<String, Item> items = new HashMap<>();
+    static Map<String, Integer> stock = new HashMap<>();
 
     public static Order order(String uuid) {
         return users.get(uuid);
@@ -33,4 +36,11 @@ public class Barista {
         return users.values();
     }
 
+    public static void place(Item item) {
+        items.put(item.getName(), item);
+    }
+
+    public static Item item(String i) {
+        return items.get(i);
+    }
 }

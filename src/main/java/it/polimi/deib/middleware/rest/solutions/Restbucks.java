@@ -2,10 +2,15 @@ package it.polimi.deib.middleware.rest.solutions;
 
 import com.google.gson.Gson;
 import it.polimi.deib.middleware.rest.Resp;
+import it.polimi.deib.middleware.rest.solutions.model.Item;
 import it.polimi.deib.middleware.rest.solutions.model.Order;
 import it.polimi.deib.middleware.rest.solutions.model.Payment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import static spark.Spark.*;
 
@@ -20,6 +25,20 @@ public class Restbucks {
             before("/*", (q, a) -> logger.info("Received api call"));
 
             get("/receipts/:order", (request, response) -> gson.toJson(Barista.order(request.params(":order"))));
+
+            path("/items", () -> {
+
+                post("", (request, response) -> {
+                    response.type("application/json");
+                    response.status(201);
+                    String body = request.body();
+                    Item item = gson.fromJson(body, Item.class);
+                    Barista.place(item);
+                    return gson.toJson(new Resp(201, "Created Item  [" + item.getName() + "]"));
+                });
+
+
+            });
 
             path("/payments", () -> {
                 //Note also PATCH would be a good method here
@@ -49,9 +68,37 @@ public class Restbucks {
                     response.type("application/json");
                     response.status(201);
                     String body = request.body();
-                    Order order = gson.fromJson(body, Order.class);
-                    Barista.place(order);
-                    return gson.toJson(new Resp(201, "Order Created with id [" + order.getId() + "]"));
+
+                    try {
+                        Map msg = gson.fromJson(body, Map.class);
+
+                        List<String> items = (List<String>) msg.get("items");
+
+                        List<Item> items1 = new ArrayList<>();
+
+                        double price = 0D;
+
+                        for (String i : items) {
+                            Item item = Barista.item(i);
+                            if (item != null) {
+                                items1.add(item);
+                                price += item.getPrice();
+                            } else {
+                                return gson.toJson(new Resp(400, "Unknown item with id [" + i + "]"));
+                            }
+                        }
+
+                        Order order = new Order((String) msg.get("client"), items1, price);
+
+                        Barista.place(order);
+
+                        return gson.toJson(new Resp(201, "Order Created with id [" + order.getId() + "]"));
+
+                    } catch (ClassCastException e) {
+                        response.status(500);
+                        return gson.toJson(new Resp(500, "Cannot process order"));
+
+                    }
                 });
                 //Used for edit the order
                 put("/:id", (request, response) -> {
