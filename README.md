@@ -12,20 +12,7 @@ Students are welcome to open pull-requests and issues
 to improve the material.
 
 
-## Projects
-
-### Hello World
-```bash
-
- curl -X POST http://localhost:9999/hello
- curl -X POST http://localhost:9999/hello
- curl  http://localhost:9999/hello
- curl  http://localhost:9999/hello
- curl -X POST http://localhost:9999/hello
-```
-
-### Users
- ## Project
+## Users
 
 ```bash
 
